@@ -23,6 +23,9 @@
                 <label for="amount">Amount</label>
                 <input type="number" id="amount" placeholder="Enter amount" min="0" step="any">
             </div>
+            <div class="errorMessage" id="errorMessage" style="display: none;">
+                <p></p>
+            </div>
             <div class="fromCurrency">
                 <select id="currencyFrom">
                     <option value="USD">USD - US Dollar</option>
@@ -176,9 +179,6 @@
                     <p id="result">Result:</p>
                     <span id="resultValue"></span>
                 </div>
-            </div>
-            <div class="errorMessage" id="errorMessage" style="display: none;">
-                <p></p>
             </div>
         </div>
     </div>

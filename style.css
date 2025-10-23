@@ -116,6 +116,15 @@ body {
     font-style: italic;
 }
 
+.errorMessage {
+    background-color: #ffdddd;
+    border-left: 6px solid #f44336;
+    padding: 10px;
+    border-radius: 8px;
+    color: #a94442;
+    font-size: 0.9rem;
+}
+
 .fromCurrency select, .toCurrency select {
     width: 100%;
     padding: 8px;
