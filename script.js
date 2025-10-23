@@ -45,7 +45,7 @@ convertBtn.addEventListener("click", async (e) => {
         }
 
         // If success
-        const rate = data.rates[to]?.value;
+        const rate = data.rate[to]?.value;
 
         if (!rate) {
             errorMessage.style.visibility = "visible";
