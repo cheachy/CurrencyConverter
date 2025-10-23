@@ -1,4 +1,4 @@
-// const values to be used 
+// Const values to be used 
 const valueInput = document.getElementById("amount"); 
 const currencyFrom = document.getElementById("currencyFrom");
 const currencyTo = document.getElementById("convertedTo");
@@ -6,8 +6,9 @@ const rateValue = document.getElementById("rateValue");
 const result = document.getElementById("resultValue");
 const convertBtn = document.querySelector(".convertButton");
 const convertDisplay = document.querySelector(".conversionInfo");
+const errorMessage = document.getElementById("errorMessage");
 
-// swap currencies
+// Swap currencies
 function swap(){
   const temp = currencyFrom.value;
   currencyFrom.value = currencyTo.value;
@@ -20,19 +21,20 @@ convertBtn.addEventListener("click", async (e) => {
   const amount = parseFloat(valueInput.value);
 
   if (isNaN(amount) || amount <= 0) {
-    result.textContent = "Enter a valid amount.";
+    errorMessage.textContent = "Enter a valid amount.";
     return;
   }
 
+  // Ensures that currency codes are in uppercase
   const from = currencyFrom.value.toUpperCase();
   const to = currencyTo.value.toUpperCase();
 
   try {
     // Call your Vercel serverless function instead of the external API
-    const response = await fetch(`/api/convert?from=${from}&to=${to}`);
+    const response = await fetch(`/api/convert?from=${from}&to=${to}`);  // Updated to call local API
     const data = await response.json();
 
-    // conditions if response is true, data was fetched and the currency rate to be converted was fetched
+    // Conditions if response is true, data was fetched and the currency rate to be converted was fetched
     if (response.ok && data.data && data.data[to]) { 
       const rate = data.data[to].value;
       const convertedAmount = (rate * amount).toFixed(2);   // rate of to be converted currency
