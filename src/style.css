@@ -23,7 +23,7 @@ html, body {
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background-image: url('assets/top-view-coins-paper-money-laptop.jpg');
+    background-image: url('/assets/top-view-coins-paper-money-laptop.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -56,7 +56,7 @@ body {
 .title p {
     color: #555;
     line-height: 1.6;
-    max-width: 400px;
+    max-width: 500px;
 }
 
 .currencyConverter {
@@ -203,17 +203,6 @@ body {
 }
 
 #resultValue {
-  font-weight: bold;
-  font-size: 2rem;
+    font-weight: bold;
+    font-size: 2rem;
 }
-
-/* .currencyConverter {
-    opacity: 0;
-    animation: fadeIn 2s ease-in-out forwards;
-    animation-delay: 0.2s;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; }
-    to { opacity: 1; }
-} */
