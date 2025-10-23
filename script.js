@@ -33,6 +33,7 @@ convertBtn.addEventListener("click", async (e) => {
     const from = currencyFrom.value.toUpperCase();
     const to = currencyTo.value.toUpperCase();
 
+    // Check if the selected currencies are the same
     if(from === to){
         errorMessage.style.visibility = "visible";
         errorMessage.textContent = "Please select different currencies to convert.";
@@ -40,29 +41,40 @@ convertBtn.addEventListener("click", async (e) => {
     }
 
     try {
-        // Call your Vercel serverless function instead of the external API
-        const response = await fetch(`/api/convert?from=${from}&to=${to}`);  // Updated to call local API
+        // Call Vercel serverless function instead of the external API
+        const response = await fetch(`/api/convert?from=${from}&to=${to}`);  // Call the internal API
         const data = await response.json();
 
-        // Conditions if response is true, data was fetched and the currency rate to be converted was fetched
-        if (response.ok && data.data && data.data[to]) { 
+        // Validate response and data
+        if (!response.ok){
+            throw new Error(data.error || "Server error. Please try again.");
+        }
+        if (!data.data || !data.data[to]){
+            throw new Error("Conversion rate not found.");
+        }
+
         const rate = data.data[to].value;
 
-        if(!rate){
-            throw new Error("Conversion rate not found.");
+        if (!rate) {
+            throw new Error("Invalid conversion rate received.");
         }
 
-        const convertedAmount = (rate * amount).toFixed(2);   // rate of to be converted currency
-        convertDisplay.style.visibility = 'visible';          // make the rate and result visible
-        rateValue.textContent = `${rate.toFixed(5)} ${to}`;   //print the rate
-        result.textContent = `${convertedAmount} ${to}`;      // print the results
+        // Conversion
+        const convertedAmount = (rate * amount).toFixed(2);
+        convertDisplay.style.visibility = "visible";
+        rateValue.textContent = `${rate.toFixed(5)} ${to}`;
+        result.textContent = `${convertedAmount} ${to}`;
 
-        } else {
-            throw new Error("Conversion rate not found.");
-        }
+        // Hide error message (if there's any)
+        errorMessage.style.visibility = "hidden";
+        errorMessage.textContent = "";
+
     } catch (error) {
+        // Hide previous conversion display
+        convertDisplay.style.visibility = "hidden";
         errorMessage.style.visibility = "visible";
         errorMessage.textContent = "Failed to fetch conversion rate.";
+
         console.error("Error fetching conversion rate:", error);
     }
 });
