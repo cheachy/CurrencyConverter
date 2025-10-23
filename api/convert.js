@@ -1,4 +1,5 @@
 export default async function handler(req, res) {
+    
     const { from, to } = req.query;
 
     const apiKey = process.env.CURRENCY_API_KEY; // get api key from .env file from Vercel
