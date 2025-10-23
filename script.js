@@ -63,7 +63,7 @@ convertBtn.addEventListener("click", async (e) => {
         // Conversion
         const convertedAmount = (rate * amount).toFixed(2);
         convertDisplay.style.visibility = "visible";
-        rateValue.textContent = `${rate.toFixed(5)} ${to}`;
+        rateValue.textContent = `${rate.toFixed(2)} ${to}`;
         result.textContent = `${convertedAmount} ${to}`;
 
         // Hide error message (if there's any)
