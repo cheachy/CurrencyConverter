@@ -24,6 +24,9 @@ convertBtn.addEventListener("click", async (e) => {
     errorMessage.style.display = "block";
     errorMessage.textContent = "Enter a valid amount.";
     return;
+  } else {
+    errorMessage.style.display = "none";
+    errorMessage.textContent = "";
   }
 
   // Ensures that currency codes are in uppercase
