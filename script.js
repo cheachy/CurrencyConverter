@@ -18,36 +18,51 @@ convertBtn.addEventListener("click", async (e) => {
 
     const amount = parseFloat(valueInput.value);
 
+    // Reset previous error messages (if there is any)
+    errorMessage.style.visibility = "none";
+    errorMessage.textContent = "";
+    convertDisplay.style.visibility = "hidden";
+
+    // Input validation
     if (isNaN(amount) || amount <= 0) {
-        errorMessage.style.display = "block";
+        errorMessage.style.visibility = "visible";
         errorMessage.textContent = "Enter a valid amount.";
         return;
-    } else {
-        errorMessage.style.display = "none";
-        errorMessage.textContent = "";
     }
 
-    // Ensures that currency codes are in uppercase
+    // Ensure currencies values are uppercase
     const from = currencyFrom.value.toUpperCase();
     const to = currencyTo.value.toUpperCase();
 
     try {
-        // Call your Vercel serverless function instead of the external API
-        const response = await fetch(`/api/convert?from=${from}&to=${to}`);  // Updated to call local API
+        const response = await fetch(`/api/convert?from=${from}&to=${to}`);     // Call the API route
         const data = await response.json();
 
-        // Conditions if response is true, data was fetched and the currency rate to be converted was fetched
-        if (response.ok && data.data && data.data[to]) { 
-        const rate = data.data[to].value;
-        const convertedAmount = (rate * amount).toFixed(2);   // rate of to be converted currency
-        convertDisplay.style.visibility = 'visible';          // make the rate and result visible
-        rateValue.textContent = `${rate.toFixed(5)} ${to}`;   //print the rate
-        result.textContent = `${convertedAmount} ${to}`;      // print the results
-        } else {
-        result.textContent = "Conversion rate not available.";
+        if (!response.ok) {
+            errorMessage.style.visibility = "visible";
+            errorMessage.textContent = data.error || "Conversion rate not available.";
+            return;
         }
+
+        // If success
+        const rate = data.rates[to]?.value;
+
+        if (!rate) {
+            errorMessage.style.visibility = "visible";
+            errorMessage.textContent = "Conversion rate not available.";
+            return;
+        }
+
+        const convertedAmount = (rate * amount).toFixed(2);
+        convertDisplay.style.visibility = "visible";
+
+        // Update the UI
+        rateValue.textContent = `${rate.toFixed(5)} ${to}`;
+        result.textContent = `${convertedAmount} ${to}`;
+
     } catch (error) {
-        result.textContent = "Error fetching currency rates.";
+        errorMessage.style.visibility = "visible";
+        errorMessage.textContent = "Error fetching currency rates.";
         console.error(error);
     }
 });

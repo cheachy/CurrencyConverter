@@ -23,9 +23,6 @@
                 <label for="amount">Amount</label>
                 <input type="number" id="amount" placeholder="Enter amount" min="0" step="any">
             </div>
-            <div class="errorMessage" id="errorMessage" style="display: none;">
-                <p></p>
-            </div>
             <div class="fromCurrency">
                 <select id="currencyFrom">
                     <option value="USD">USD - US Dollar</option>
@@ -169,6 +166,9 @@
             </div>
             <div class="convertButton">
                 <button id="convertButton">Exchange</button>
+            </div>
+            <div class="errorMessage" id="errorMessage" style="visibility: hidden;">
+                <p></p>
             </div>
             <div class="conversionInfo" style="visibility: hidden">
                 <div class="conversionRate">
