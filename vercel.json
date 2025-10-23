@@ -1,6 +1,6 @@
 {
   "builds": [
     { "src": "api/convert.js", "use": "@vercel/node" },
-    { "src": "index.html", "use": "@vercel/static" }
+    { "src": "src/index.html", "use": "@vercel/static" }
   ]
 }
