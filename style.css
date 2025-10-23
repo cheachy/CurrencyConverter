@@ -216,3 +216,37 @@ body {
     font-weight: bold;
     font-size: 2rem;
 }
+
+@media (max-width: 480px) {
+    body {
+      background-size: cover;
+      background-position: top center;
+    }
+  
+    .title h1 {
+      font-size: 1.8rem;
+    }
+  
+    .title h3 {
+      font-size: 1rem;
+    }
+  
+    .currencyConverter {
+      padding: 20px;
+      width: 100%;
+    }
+  
+    .amountInput input {
+      font-size: 1rem;
+      padding: 10px;
+    }
+  
+    .convertButton button {
+      font-size: 0.9rem;
+      padding: 10px;
+    }
+  
+    #resultValue {
+      font-size: 1.5rem;
+    }
+  }
