@@ -76,7 +76,6 @@ convertBtn.addEventListener("click", async (e) => {
         convertDisplay.style.visibility = "hidden";
         errorMessage.style.visibility = "visible";
         errorMessage.textContent = "Failed to fetch conversion rate.";
-
         console.error("Error fetching conversion rate:", error);
     }
 });
