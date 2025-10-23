@@ -217,10 +217,25 @@ body {
     font-size: 2rem;
 }
 
+/* Mobile devices */
 @media (max-width: 480px) {
     body {
       background-size: cover;
       background-position: top center;
+    }
+  
+    .container {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      margin: 0;
+    }
+  
+    .title {
+      margin-top: 2rem;
+      margin-left: 0;
+      text-align: center;
     }
   
     .title h1 {
@@ -231,9 +246,16 @@ body {
       font-size: 1rem;
     }
   
+    .title p {
+      font-size: 0.9rem;
+      max-width: 90%;
+      margin: 0 auto;
+    }
+  
     .currencyConverter {
-      padding: 20px;
       width: 100%;
+      max-width: 350px;
+      padding: 20px;
     }
   
     .amountInput input {
