@@ -21,6 +21,7 @@ convertBtn.addEventListener("click", async (e) => {
   const amount = parseFloat(valueInput.value);
 
   if (isNaN(amount) || amount <= 0) {
+    errorMessage.style.display = "block";
     errorMessage.textContent = "Enter a valid amount.";
     return;
   }
