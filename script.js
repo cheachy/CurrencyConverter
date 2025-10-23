@@ -19,6 +19,7 @@ convertBtn.addEventListener("click", async (e) => {
     const amount = parseFloat(valueInput.value);
 
     // Reset error message and conversion display
+    errorMessage.style.display = "block";
     errorMessage.style.visibility = "hidden";
     errorMessage.textContent = "";
     convertDisplay.style.visibility = "hidden";
@@ -66,6 +67,7 @@ convertBtn.addEventListener("click", async (e) => {
         result.textContent = `${convertedAmount} ${to}`;
 
         // Hide error message (if there's any)
+        errorMessage.style.display = "none";
         errorMessage.style.visibility = "hidden";
         errorMessage.textContent = "";
 
