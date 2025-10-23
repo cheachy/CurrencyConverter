@@ -23,7 +23,7 @@ html, body {
 
 body {
     font-family: 'Montserrat', sans-serif;
-    background-image: url('/assets/top-view-coins-paper-money-laptop.jpg');
+    background-image: url('assets/top-view-coins-paper-money-laptop.jpg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
@@ -41,6 +41,7 @@ body {
 .title {
     margin-top: 13rem;
     flex: 1;
+    margin-left: 5rem;
 }
 
 .title h3 {

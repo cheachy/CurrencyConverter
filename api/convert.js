@@ -8,12 +8,8 @@ export default async function handler(req, res) {
         const response = await fetch(url);
         const data = await response.json();
 
-        if (response.ok) {
         res.status(200).json(data);
-        } else {
-        res.status(400).json({ error: "Failed to fetch rate", details: data });
-        }
-        } catch (error) {
-        res.status(500).json({ error: "Server error", details: error.message });
+    } catch (error) {
+        res.status(500).json({ error: 'Failed to fetch currency data' });
     }
 }

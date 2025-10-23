@@ -1,2 +1,1 @@
-#Ignore .env file containing API keys
-.env
+.vercel

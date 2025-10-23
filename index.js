@@ -29,7 +29,7 @@ convertBtn.addEventListener("click", async (e) => {
 
   try {
     // Call your Vercel serverless function instead of the external API
-    const response = await fetch(`/api/convert?from=${from}&to=${to}`); 
+    const response = await fetch(`/api/convert?from=${from}&to=${to}`);
     const data = await response.json();
 
     // conditions if response is true, data was fetched and the currency rate to be converted was fetched
